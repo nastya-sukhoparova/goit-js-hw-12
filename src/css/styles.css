@@ -1,18 +1,123 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+/* Загальні стилі */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  /* Світлий фон */
+}
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+/* Контейнер галереї */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Адаптивні стовпці */
+  gap: 20px;
+  /* Відстань між картками */
+  padding: 20px;
+  /* Внутрішні відступи */
+}
+
+/* Стилі для елементів галереї */
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  /* Збільшення при наведенні */
+}
+
+/* Кнопка "Load more" */
+.load-more {
+  display: none;
+  /* Сховати за замовчуванням */
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  /* Основний колір кнопки */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.load-more:hover {
+  background-color: #e64a19;
+  /* Темніший відтінок при наведенні */
+}
+
+/* Індикатор завантаження */
+.loader {
+  display: none;
+  /* Сховати за замовчуванням */
+  margin: 20px auto;
+  text-align: center;
+}
+
+.loader.active {
+  display: block;
+  /* Показати, коли активний */
+}
+
+/* Повідомлення про кінець колекції */
+.end-message {
+  display: none;
+  /* Сховати за замовчуванням */
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  color: #ff5722;
+  /* Колір повідомлення */
+}
+
+.end-message.active {
+  display: block;
+  /* Показати, коли активний */
+}
+
+/* Стилизація форми */
+form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 300px;
+  /* Ширина поля вводу */
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #ff5722;
+  /* Основний колір кнопки */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #e64a19;
+  /* Темніший відтінок при наведенні */
+}
