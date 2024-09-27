@@ -1,5 +1,7 @@
 import { fetchImages } from './js/pixabay-api';
 import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const form = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
@@ -21,14 +23,14 @@ function onSearch(event) {
     return;
   }
 
-  page = 1;  
-  clearGallery();  
+  page = 1;
+  clearGallery();
   fetchAndRenderImages();
 }
 
 function fetchAndRenderImages() {
   loader.classList.remove('hidden');
-  
+
   fetchImages(query, page)
     .then(data => {
       if (data.hits.length === 0) {
@@ -36,10 +38,10 @@ function fetchAndRenderImages() {
         loader.classList.add('hidden');
         return;
       }
-      
+
       renderGallery(data.hits);
       lightbox.refresh();
-      
+
       if (data.totalHits > page * 12) {
         loadMoreBtn.classList.remove('hidden');
       } else {
