@@ -29,23 +29,33 @@ function onSearch(event) {
 }
 
 function fetchAndRenderImages() {
-  loader.classList.remove('hidden');
+  loader.classList.remove('hidden'); 
 
   fetchImages(query, page)
     .then(data => {
       if (data.hits.length === 0) {
         Notify.failure('No images found. Try a different search query.');
-        loader.classList.add('hidden');
         return;
       }
 
       renderGallery(data.hits);
       lightbox.refresh();
 
-      if (data.totalHits > page * 12) {
+      if (data.totalHits > page * 15) { 
         loadMoreBtn.classList.remove('hidden');
       } else {
         loadMoreBtn.classList.add('hidden');
+      }
+
+      if (page > 1) {
+        const { height: cardHeight } = document
+          .querySelector('.gallery')
+          .firstElementChild.getBoundingClientRect();
+
+        window.scrollBy({
+          top: cardHeight * 2,
+          behavior: 'smooth',
+        });
       }
     })
     .catch(error => {
@@ -53,7 +63,7 @@ function fetchAndRenderImages() {
       Notify.failure('Something went wrong, please try again later.');
     })
     .finally(() => {
-      loader.classList.add('hidden');
+      loader.classList.add('hidden'); 
     });
 }
 
