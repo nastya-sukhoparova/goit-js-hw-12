@@ -93,3 +93,11 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.loader {
+  display: none;
+}
+
+.loader.active {
+  display: block;
+}

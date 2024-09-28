@@ -29,7 +29,7 @@ function onSearch(event) {
 }
 
 function fetchAndRenderImages() {
-  loader.classList.remove('hidden'); 
+  loader.classList.add('active'); 
 
   fetchImages(query, page)
     .then(data => {
@@ -47,6 +47,7 @@ function fetchAndRenderImages() {
         loadMoreBtn.classList.add('hidden');
       }
 
+ 
       if (page > 1) {
         const { height: cardHeight } = document
           .querySelector('.gallery')
@@ -63,7 +64,7 @@ function fetchAndRenderImages() {
       Notify.failure('Something went wrong, please try again later.');
     })
     .finally(() => {
-      loader.classList.add('hidden'); 
+      loader.classList.remove('active'); 
     });
 }
 
